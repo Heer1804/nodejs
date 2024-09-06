@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+        .main {
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #153677, #4e085f);
+            padding: 10px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .todo-list {
+            width: 100%;
+            max-width: 540px;
+            background: #fff;
+            margin: 100px auto 20px;
+            padding: 40px 30px 70px;
+            border-radius: 10px;
+        }
+
+        .todo-list h2 {
+            color: #002765;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .todo-list h2 img {
+            width: 30px;
+            margin-left: 10px;
+
+        }
+
+        a img {
+            width: 30px;
+            margin-left: 10px;
+            margin: 5px 0 3px 15px;
+        }
+
+        .form {
+            display: flex;
+            align-items: center;
+            background: #edeef0;
+            border-radius: 30px;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        input {
+            flex: 1;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 10px;
+        }
+
+        .sub-btn {
+            width: 100%;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            padding: 12px 50px;
+            background: #ff5945;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 40px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="todo-list">
+            <h2>To-Do List<img src="/images/pencil.png"></h2>
+            <form action="/insertData" method="post">
+                <div class="form">
+                    <input type="text" name="id" placeholder="Sr no."value="<%= data.id %>" disabled>
+                    <input type="hidden" name="editId" placeholder="Sr no." value="<%= data.id %>">
+                </div>
+                <div class="form">
+                    <input type="text" name="ToDo" placeholder="Add Your ToDo" value="<%= data.ToDo %>">
+                </div>
+                <div class="sub-btn">
+                    <button type="submit">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </section>
+</body>
+
+</html>
