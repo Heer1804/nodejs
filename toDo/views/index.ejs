@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
+        }
+
+        body {
+            background: #ecf4ff;
+            color: #000000;
+        }
+
+        .main {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .todo-list {
+            width: 100%;
+            max-width: 540px;
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 5px;
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        .form {
+            display: flex;
+            align-items: center;
+            background: #e7f0f8;
+            border-radius: 30px;
+            padding-left: 20px;
+            margin-bottom: 5px;
+            border: 1px solid #d5e0ec;
+        }
+
+        input {
+            flex: 1;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+        input::placeholder {
+            color: #888;
+        }
+
+        .sub-btn {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            padding: 12px 50px;
+            background: #42a5f5;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 40px;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #1e88e5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        td {
+            padding: 12px 15px;
+            text-align: center;
+            color: #555;
+            font-size: 16px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        th {
+            padding: 12px 95px;
+            background: #e3f2fd;
+            border: 1px solid #aebbda;
+        }
+
+        tr {
+            background: #f9f9f9;
+        }
+
+        tr:hover {
+            background: #e3f2fd;
+        }
+
+        i{
+            color: #3a3a3a;
+            padding-right:25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="todo-list">
+            <h2>To-Do List</h2>
+            <form action="/insertData" method="post" onsubmit="return validateForm()">
+                <input type="hidden" name="id" value="<%= Date.now() %>">
+                <div class="form">
+                    <input type="text" name="task" placeholder="Add Your Task" required>
+                </div>
+                <div class="sub-btn">
+                    <button type="submit">Add</button>
+                </div>
+            </form>
+            <table class="table">
+                <tr>
+                    <th>Task</th>
+                    <th>Action</th>
+                </tr>
+                <% lists.map((val) => { %>
+                    <tr>
+                        <td><%= val.task %></td>
+                        <td>
+                            <a href="/delItem/<%= val.id %>"><i class="fa-solid fa-trash"></i></a>
+                            <a href="/editData/<%= val.id %>"><i class="fa-regular fa-pen-to-square"></i></a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </table>
+        </div>
+    </div>
+    <script>
+        function validateForm() {
+            const taskInput = document.querySelector('input[name="task"]');
+            if (taskInput.value.trim() === '') {
+                alert('Task cannot be empty');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>
+
+
