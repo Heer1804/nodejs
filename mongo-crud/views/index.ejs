@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table tr td{
+            padding: 5px;
+        }
+        input{
+            padding: 2px;
+        }
+        body{
+            background-color: rgb(204, 229, 236);
+        }
+    </style>
+</head>
+<body>
+    <form action="/insertData" method="post">
+        <table border="" align="center" >
+            <caption><h1>Add Data</h1></caption>
+            <tr >
+                <td>User Name</td>
+                <td><input type="text" name="username" id=""></td>
+            </tr>
+            <tr>
+                <td>E-Mail</td>
+                <td><input type="text" name="email" id=""></td>
+            </tr>
+            <tr>
+                <td>Phone Number</td>
+                <td><input type="number" name="phone" id=""></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="password" id=""></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><textarea name="address" id="address"></textarea></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td><input type="radio" name="male" id="">Male
+                <input type="radio" name="female" id="">Female</td>
+            </tr>
+            <tr>
+                <td>Hobbies</td>
+                <td><input type="checkbox" name="singing" id="">Singing
+                    <input type="checkbox" name="reading" id="">Reading
+                    <input type="checkbox" name="writing" id="">writing
+                </td>
+            </tr>
+            <tr><td></td><td><input type="submit" value="Add Data"></td></tr>
+        </table>
+    </form>
+
+    <table border="" align="center">
+        <caption><h2>User Data</h2></caption>
+        <tr>
+            <td>User Name</td>
+            <td>E-mail</td>
+            <td>Phone Number</td>
+            <td>Password</td>
+            <td>Address</td>
+            <td>Gender</td>
+            <td>Hobbies</td>
+        </tr>
+
+        <% data.map((val,id)=>{ %>
+            <tr>
+                <td><%= val.username %></td>
+                <td><%= val.email %></td>
+                <td><%= val.phone %></td>
+                <td><%= val.password %></td>
+                <td><%= val.address %></td>
+                <td><%= val.gender %></td>
+                <td><%= val.hobbies %></td>
+            </tr>    
+        <% }) %>
+    </table>
+
+
+</body>
+</html
