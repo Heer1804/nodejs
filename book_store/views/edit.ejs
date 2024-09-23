@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User Data</title>
+    <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        .table-container {
+            max-height: 700px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container py-5">
+        <div class="row justify-content-center table-container">
+            <div class="col-md-8">
+                <form action="/insertData" method="post" class="shadow p-4 rounded bg-light  bg-body-secondary">
+                    <h2 class="text-center pb-3 fw-bold">Edit User Data</h2>
+                    <div class="mb-3">
+                        <label for="title" class="form-label fw-bold">Title</label>
+                        <input type="text" class="form-control" name="title" id="title" value="<%= data.title %>" required>
+                        <input type="hidden" name="editId" id="editId" value="<%= data.id %>">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="author" class="form-label fw-bold">Author</label>
+                        <input type="text" class="form-control" name="author" id="author" value="<%= data.author %>" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="price" class="form-label fw-bold ">Price</label>
+                        <input type="text" class="form-control" name="price" id="price" value="<%= data.price %>" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Pages</label>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input " name="pages" value="100-200" id="pages1" <% if(data.pages == '100-200') { %>checked<% } %> >
+                            <label for="pages1" class="form-check-label">100-200</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="pages" value="200-400" id="pages2" <% if(data.pages == '200-400') { %>checked<% } %> >
+                            <label for="pages2" class="form-check-label">200-400</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="pages" value="400-600" id="pages3" <% if(data.pages == '400-600') { %>checked<% } %> >
+                            <label for="pages3" class="form-check-label">400-600</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input " name="pages" value="600-800" id="pages4" <% if(data.pages == '600-800') { %>checked<% } %> >
+                            <label for="pages4" class="form-check-label">600-800</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Language</label>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" name="language" value="English" id="lang1" <% if(data.language.includes('English')) { %>checked<% } %> >
+                            <label for="lang1" class="form-check-label">English</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" name="language" value="Hindi" id="lang2" <% if(data.language.includes('Hindi')) { %>checked<% } %> >
+                            <label for="lang2" class="form-check-label">Hindi</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" name="language" value="Gujarati" id="lang3" <% if(data.language.includes('Gujarati')) { %>checked<% } %> >
+                            <label for="lang3" class="form-check-label">Gujarati</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Language</label>
+                        <label for="description" class="form-label ">Description</label>
+                        <textarea name="description" class="form-control" id="description" rows="3" required><%= data.description %></textarea>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-outline-secondary">Update Data</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

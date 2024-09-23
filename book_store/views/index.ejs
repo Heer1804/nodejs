@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User Data</title>
+    <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        .table-container {
+            max-height: 700px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center table-container">
+            <div class="col-md-8">
+                <form action="/insertData" method="post" class="shadow p-4 rounded bg-body-secondary">
+                    <h2 class="text-center pb-3 fw-bold">Add User Data</h2>
+                    <div class="mb-1">
+                        <label for="title" class="form-label fw-bold">Title</label>
+                        <input type="text" class="form-control " name="title" id="title" required>
+                        <input type="hidden" name="id" value="<%= Date.now() %>">
+                    </div>
+
+                    <div class="mb-1">
+                        <label for="author" class="form-label fw-bold">Author</label>
+                        <input type="text" class="form-control" name="author" id="author" value="<%= data.author %>"
+                            required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="price" class="form-label fw-bold">Price</label>
+                        <input type="text" class="form-control" name="price" id="price" required>
+                    </div>
+
+                    <div class="mb-1">
+                        <label class="form-label fw-bold">Pages</label>
+                        <div class="form-check ps-5 form-check-inline">
+                            <input type="radio" class="form-check-input" name="pages" value="100-200" id="pages1">
+                            <label for="pages1" class="form-check-label">100-200</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="pages" value="200-400" id="pages2">
+                            <label for="pages2" class="form-check-label">200-400</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="pages" value="400-600" id="pages3">
+                            <label for="pages3" class="form-check-label">400-600</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="pages" value="600-800" id="pages4">
+                            <label for="pages4" class="form-check-label">600-800</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-1">
+                        <label class="form-label fw-bold">Language</label>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" name="language" value="English" id="lang1">
+                            <label for="lang1" class="form-check-label">English</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" name="language" value="Hindi" id="lang2">
+                            <label for="lang2" class="form-check-label">Hindi</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" name="language" value="Gujarati" id="lang3">
+                            <label for="lang3" class="form-check-label">Gujarati</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="description" class="form-label fw-bold">Description</label>
+                        <textarea name="description" class="form-control" id="description" required></textarea>
+                    </div>
+
+                    <div class="text-center ">
+                        <button type="submit" class="btn btn-outline-secondary">Add Data</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- User Data Table -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-10">
+                <h2 class="text-center pb-2">User Data</h2>
+                <table class="table table-bordered table-striped table-hover text-center">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Price</th>
+                            <th>Pages</th>
+                            <th>Language</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% data.map((val,id)=>{ %>
+                            <tr>
+                                <td>
+                                    <%= val.title %>
+                                </td>
+                                <td>
+                                    <%= val.author %>
+                                </td>
+                                <td>
+                                    <%= val.price %>
+                                </td>
+                                <td>
+                                    <%= val.pages %>
+                                </td>
+                                <td>
+                                    <%= val.language %>
+                                </td>
+                                <td>
+                                    <%= val.description %>
+                                </td>
+                                <td>
+                                    
+                                    <a href="/editData/<%= val.id %>"><i
+                                            class="fa-regular fa-pen-to-square pe-3 text-body"></i></a>
+
+                                            <a href="/deleteData/<%= val.id %>"><i
+                                                class="fa-solid fa-trash  text-body"></i></a>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="../bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
