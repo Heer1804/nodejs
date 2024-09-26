@@ -6,15 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User Data</title>
     <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
-    <style>
-        .table-container {
-            max-height: 700px;
-        }
-    </style>
+    
 </head>
 
 <body>
-
     <div class="container py-5">
         <div class="row justify-content-center table-container">
             <div class="col-md-8">
@@ -73,9 +68,29 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label fw-bold">Language</label>
-                        <label for="description" class="form-label ">Description</label>
+                        
+                        <label for="description" class="form-label fw-bold">Description</label>
                         <textarea name="description" class="form-control" id="description" rows="3" required><%= data.description %></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="city" class="form-label fw-bold">City</label>
+                        <select name="city" id="">
+                            <option value="" disabled selected>--select-city--</option>
+                            <%
+                                let City = ["Surat",,"Pune","Goa","Mumbai","Vapi"];
+                                City.map((val,idx)=>{
+                            %>
+                                    <option 
+                                        value="<%= val %>"
+                                        <% if(data.city == val){ %> selected <% } %>  
+                                    >
+                                    <%= val %>
+                                    </option>
+                            <%
+                                })
+                            %>
+                        </select>
                     </div>
 
                     <div class="text-center">

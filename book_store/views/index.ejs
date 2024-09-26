@@ -7,12 +7,7 @@
     <title>Add User Data</title>
     <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <style>
-        .table-container {
-            max-height: 700px;
-        }
-    </style>
-
+    
 </head>
 
 <body>
@@ -79,6 +74,21 @@
                         <textarea name="description" class="form-control" id="description" required></textarea>
                     </div>
 
+                    <div class="mb-4">
+                        <label for="city" class="form-label fw-bold pe-5">Select Your City</label>
+                        <select name="city" id="">
+                            <option value="" disabled selected>Select Your City</option>
+                            <%
+                                let City = ["Surat","Pune","Goa","Mumbai","Vapi"];
+                                City.map((val,idx)=>{
+                            %>
+                                    <option value="<%= val %>"><%= val %></option>
+                            <%
+                                })
+                            %>
+                        </select>
+                    </div>
+
                     <div class="text-center ">
                         <button type="submit" class="btn btn-outline-secondary">Add Data</button>
                     </div>
@@ -99,6 +109,7 @@
                             <th>Pages</th>
                             <th>Language</th>
                             <th>Description</th>
+                            <th>City</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -122,6 +133,9 @@
                                 </td>
                                 <td>
                                     <%= val.description %>
+                                </td>
+                                <td>
+                                    <%= val.city %>
                                 </td>
                                 <td>
                                     
