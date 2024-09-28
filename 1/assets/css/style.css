@@ -1,0 +1,69 @@
+body{
+    background-color: black;
+}
+.logo{
+    width: 150px;
+}
+.header {
+    padding: 10px 20px;
+}
+.gold {
+    color: #c5a645;
+}
+.ls {
+    letter-spacing: 3px;
+}
+
+.ls-1 {
+    letter-spacing: 1px;
+}
+
+.grey {
+    color: #c4c7c5;
+}
+
+.text {
+    color: #dfe5f2;
+}
+.shadow {
+    box-shadow:-2px 0px 17px 1px #4e4c4c9a !important;
+}
+
+/* main */
+.menu a {
+    margin-left: 15px;
+    color: white;
+    text-decoration: none;
+}
+.menu a:hover {
+    text-decoration: underline;
+}
+
+.insta {
+    width: 28px;
+    height: 30px;
+    transition: all 0.5s linear;
+    display: flex;
+}
+
+
+.follow:hover .insta {
+    opacity: 1 !important;
+}
+
+.follow img {
+    transition: all .5s linear;
+}
+
+.follow:hover img {
+    opacity: 0.5 !important;
+}
+
+/* shop */
+.s_img{
+    transition: all 0.5s linear;
+}
+
+.s_img:hover img{
+  opacity: .5;
+}
